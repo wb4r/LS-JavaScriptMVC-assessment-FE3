@@ -4,3 +4,40 @@
   src: url('public/fonts/glyphicons-halflings-regular.eot');
   src: url('public/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
+
+.leftColumn-global {
+  background-color: #474e78;
+  height: 100vh;
+}
+
+.rightColumn-global {
+  border-right: 4px solid #666666;
+  height: 100vh;
+}
+
+.testingHeight {
+  min-height: 200px;
+  border: 2px solid black;
+}
+
+.testing {
+  border: 2px solid black;
+}
+
+.navsection {
+  height: 75px;
+  margin-left: 10px;
+}
+#new-list-btn-region {
+  height: 100px;
+  padding-top: 35px;
+}
+
+.pending-list-region-Container,
+.navsection {
+  color: white;
+}
+
+ul li {
+  list-style: none;
+}
