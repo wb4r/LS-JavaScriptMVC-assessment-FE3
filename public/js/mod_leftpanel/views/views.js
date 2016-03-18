@@ -8,20 +8,36 @@ App.module("LeftPanel.Views", function(Views, App, Backbone, Marionette, $, _) {
     tagName: "li",
     template: "#left-panel-list",
 
-    events: {
+    triggers: {
       "click    .left-panel-list-title":    "changeTitle"
     },
 
     changeTitle: function() {
-      this.trigger("title:changeTitle", this.model)
+      this.trigger("changeTitle", this.model)
     }
   });
 
-  Views.Lists = Marionette.CompositeView.extend({
-    template: "#left-panel-lists",
+  // Views.PendingLists = Marionette.CollectionView.extend({
+  //   template: "#left-panel-lists",
+  //   childView: Views.List,
+  //   tagName: "ul",
+  // });
+
+
+  Views.CompLists = Marionette.CompositeView.extend({
+    template: "#left-panel-cmp-lists",
     childView: Views.List,
     tagName: "ul"
   });
+
+  Views.PendLists = Marionette.CompositeView.extend({
+    template: "#left-panel-pnd-lists",
+    childView: Views.List,
+    tagName: "ul"
+  });
+
+
+
 
   Views.NewListBtn = Marionette.ItemView.extend({
     template: "#left-panel-newlistbtn",

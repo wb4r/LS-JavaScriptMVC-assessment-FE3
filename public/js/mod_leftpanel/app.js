@@ -21,6 +21,15 @@ App.LeftPanel.on("before:start", function() {
 })
 
 App.LeftPanel.on("start", function() {
-  App.LeftPanel.Controller.init();
+  // App.LeftPanel.Controller.init();
+  
   // App.LeftPanel.PendingLists.Controller.start();
+  // Tthis below was printing the whole list, not valid any more
+  // App.Controller.initiateBigList();
+})
+App.LeftPanel.on("after:start", function() {
+  // App.LeftPanel.Controller.init();
+  // App.LeftPanel.PendingLists.Controller.start();
+  // Tthis below was printing the whole list, not valid any more
+  // App.Controller.initiateBigList();
 })

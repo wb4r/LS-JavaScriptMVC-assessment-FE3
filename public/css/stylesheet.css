@@ -33,6 +33,7 @@
   padding-top: 35px;
 }
 
+.completed-list-region-Container,
 .pending-list-region-Container,
 .navsection {
   color: white;
@@ -40,4 +41,8 @@
 
 ul li {
   list-style: none;
+}
+
+.completed-list-region-Container {
+  margin-top: 200px;
 }

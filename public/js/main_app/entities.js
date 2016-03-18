@@ -20,9 +20,6 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
     url: ""
   })
 
-
-
-
   Entities.List = Backbone.Model.extend({
     initialize: function() {
       // var id = App.Controller.BigList.length + 1;

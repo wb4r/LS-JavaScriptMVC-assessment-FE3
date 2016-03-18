@@ -22,6 +22,7 @@ App.on("start", function() {
   // App.Controller.init();
   App.LeftPanel.start();
   App.Controller.loadLocalStorage();
+  App.LeftPanel.Controller.init();
   // App.regions.LeftPanel.show();
 
   // App.Intro.Controller.showIntroAlbums();
@@ -29,3 +30,6 @@ App.on("start", function() {
   // App.Cart.Total.Controller.init();
   // App.Custom.Controller.init();
 })
+// App.on("after:start", function() {
+//   App.LeftPanel.Controller.init();
+// })

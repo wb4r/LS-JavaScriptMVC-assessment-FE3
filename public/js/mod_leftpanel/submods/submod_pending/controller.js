@@ -7,39 +7,27 @@ App.module("LeftPanel.PendingLists", function(PendingLists, App, Backbone, Mario
 
 
   PendingLists.Controller = {
-    newList: function() {
-      var id = this.getId();
-
-      var todos = new App.Entities.Todos();
-      var newList = new App.Entities.List({todos: todos});
-      newList.set({"id": id, "title": "title-" + id});
-      App.Controller.BigList.create(newList);
-      
-
-      var listOfListsView = new App.LeftPanel.Views.Lists({
-        collection: App.Controller.BigList
-      })
-
-      listOfListsView.on("changeTitle", function(childView, model) {
-        console.log(childView);
-        console.log(model);
-      })
-
-      // DELETE FROM HERE LATER
-      // newList.save()
-
-      App.LeftPanel.regions.pendingList.show(listOfListsView)
-    },
-    getId: function() {
-      var id;
-
-      if (App.Controller.BigList) {
-        id = App.Controller.BigList.length + 1;
-      } else {
-        id = 1;
-      }
-      return id;
-    }
+    // this should only add a view to the pendings
+    
+    // newList: function() {
+    //   var id = this.getId();
+    //
+    //   var todos = new App.Entities.Todos();
+    //   var newList = new App.Entities.List({todos: todos});
+    //   newList.set({"id": id, "title": "Title-" + id});
+    //   App.Controller.BigList.create(newList);
+    //
+    // },
+    // getId: function() {
+    //   var id;
+    //
+    //   if (App.Controller.BigList) {
+    //     id = App.Controller.BigList.length + 1;
+    //   } else {
+    //     id = 1;
+    //   }
+    //   return id;
+    // }
   }
 })
 
