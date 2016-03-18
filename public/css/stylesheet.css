@@ -50,3 +50,11 @@ ul li {
 .pending-list-region-Container {
   margin-bottom: 60px;
 }
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}

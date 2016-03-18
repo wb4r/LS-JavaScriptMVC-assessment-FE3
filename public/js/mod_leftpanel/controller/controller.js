@@ -16,8 +16,9 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
         App.Controller.newList();
       });
 
-      this.selectPendingAndRender()
-      this.selectCompletedAndRender()
+      this.renderLeft();
+      // this.selectPendingAndRender()
+      // this.selectCompletedAndRender()
     },
 
     // CHANGE THIS NAME
@@ -27,7 +28,7 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
       var listOfPendingListsView = this.newView(listOfPendingLists)
 
       listOfPendingListsView.on("childview:changeTitle", function(childView, model) {
-        self.switchCompleted(childView, true)
+        // self.switchCompleted(childView, true)
       })
 
       App.LeftPanel.regions.pendingList.show(listOfPendingListsView);
@@ -40,10 +41,15 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
       var listOfCompletedListsView = this.newView(listOfCompletedLists)
 
       listOfCompletedListsView.on("childview:changeTitle", function(childView, model) {
-        self.switchCompleted(childView, false)
+        // self.switchCompleted(childView, false)
       })
 
       App.LeftPanel.regions.completedList.show(listOfCompletedListsView);
+    },
+
+    renderLeft: function() {
+      this.selectPendingAndRender()
+      this.selectCompletedAndRender()
     },
     newView: function(collection) {
       return new App.LeftPanel.Views.Lists({
@@ -54,8 +60,9 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
     switchCompleted: function(childView, isCompleted) {
       childView.model.set({"completed": isCompleted})
       childView.model.save()
-      this.selectPendingAndRender()
-      this.selectCompletedAndRender()
+      // this.selectPendingAndRender()
+      // this.selectCompletedAndRender()
+      this.renderLeft();
     },
 
     filterList: function(isCompleted) {
