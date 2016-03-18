@@ -13,15 +13,15 @@ App.module("LeftPanel.Views", function(Views, App, Backbone, Marionette, $, _) {
     },
 
     changeTitle: function() {
-      this.trigger("changeTitle", this.model)
+      this.trigger("changeTitle")
     }
   });
 
-  // Views.PendingLists = Marionette.CollectionView.extend({
-  //   template: "#left-panel-lists",
-  //   childView: Views.List,
-  //   tagName: "ul",
-  // });
+  Views.Lists = Marionette.CollectionView.extend({
+    template: "#left-panel-lists",
+    childView: Views.List,
+    tagName: "ul",
+  });
 
 
   Views.CompLists = Marionette.CompositeView.extend({

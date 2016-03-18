@@ -19,40 +19,50 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
       this.selectPendingAndRender()
       this.selectCompletedAndRender()
     },
-    
-    selectPendingAndRender: function() {
-      // New Pending List of Lists
-      var listOfPendingLists = new App.LeftPanel.Entities.Lists(
-        App.Controller.BigList.where({completed: false})
-      )
 
-      var listOfPendingListsView = new App.LeftPanel.Views.PendLists({
-        collection: listOfPendingLists
-      })
+    // CHANGE THIS NAME
+    selectPendingAndRender: function() {
+      var self = this;
+      var listOfPendingLists = this.filterList(false)
+      var listOfPendingListsView = this.newView(listOfPendingLists)
 
       listOfPendingListsView.on("childview:changeTitle", function(childView, model) {
-        console.log(childView);
-        console.log(model);
+        self.switchCompleted(childView, true)
       })
 
       App.LeftPanel.regions.pendingList.show(listOfPendingListsView);
     },
-    selectCompletedAndRender: function() {
-      // New Completed List of Lists
-      var listOfCompletedLists = new App.LeftPanel.Entities.Lists(
-        App.Controller.BigList.where({completed: true})
-      )
 
-      var listOfCompletedListsView = new App.LeftPanel.Views.CompLists({
-        collection: listOfCompletedLists
-      })
+
+    selectCompletedAndRender: function() {
+      var self = this;
+      var listOfCompletedLists = this.filterList(true)
+      var listOfCompletedListsView = this.newView(listOfCompletedLists)
 
       listOfCompletedListsView.on("childview:changeTitle", function(childView, model) {
-        console.log(childView);
-        console.log(model);
+        self.switchCompleted(childView, false)
       })
 
       App.LeftPanel.regions.completedList.show(listOfCompletedListsView);
+    },
+    newView: function(collection) {
+      return new App.LeftPanel.Views.Lists({
+        collection: collection
+      })
+    },
+
+    switchCompleted: function(childView, isCompleted) {
+      childView.model.set({"completed": isCompleted})
+      childView.model.save()
+      this.selectPendingAndRender()
+      this.selectCompletedAndRender()
+    },
+
+    filterList: function(isCompleted) {
+      var listOfLists = new App.LeftPanel.Entities.Lists(
+        App.Controller.BigList.where({completed: isCompleted})
+      )
+      return listOfLists
     }
   }
 })

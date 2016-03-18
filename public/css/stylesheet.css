@@ -42,7 +42,11 @@
 ul li {
   list-style: none;
 }
-
+/*
 .completed-list-region-Container {
   margin-top: 200px;
+}*/
+
+.pending-list-region-Container {
+  margin-bottom: 60px;
 }
