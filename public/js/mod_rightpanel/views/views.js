@@ -62,11 +62,11 @@ App.module("RightPanel.Views", function(Views, App, Backbone, Marionette, $, _) 
 
   Views.Card = Marionette.ItemView.extend({
     tagName: "li",
-    template: "#",
+    template: "#right-panel-card",
   });
 
   Views.Cards = Marionette.CollectionView.extend({
-    template: "#",
+    template: "#right-panel-cards",
     childView: Views.Card,
     tagName: "ul",
   });
