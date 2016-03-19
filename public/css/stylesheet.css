@@ -58,3 +58,34 @@ ul li {
 .shown {
   display: block;
 }
+
+a:link {
+  text-decoration: none!important;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none!important;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none!important;
+  cursor: pointer;
+}
+
+.right-panel-top-makespace {
+  min-height: 40px;
+}
+
+.right-panel-medium-makespace {
+  min-height: 20px;
+}
+
+.glyphs-header-row {
+  padding-top: 25px;
+}
+
+#h3-header {
+  margin-top: 0px;
+}

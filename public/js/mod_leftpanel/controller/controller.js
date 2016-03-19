@@ -29,6 +29,7 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
 
       listOfPendingListsView.on("childview:changeTitle", function(childView, model) {
         // self.switchCompleted(childView, true)
+        App.RightPanel.Controller.init(model)
       })
 
       App.LeftPanel.regions.pendingList.show(listOfPendingListsView);
@@ -67,7 +68,8 @@ App.module("LeftPanel", function(LeftPanel, App, Backbone, Marionette, $, _) {
 
     filterList: function(isCompleted) {
       var listOfLists = new App.LeftPanel.Entities.Lists(
-        App.Controller.BigList.where({completed: isCompleted})
+        // App.Controller.BigList.where({completed: isCompleted})
+        BigList.where({completed: isCompleted})
       )
       return listOfLists
     }

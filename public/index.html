@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Music App Store</title>
+    <title>Kanban Application</title>
     <link rel="stylesheet" href="css/vendor/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/vendor/backbone.modal.css">
@@ -13,57 +13,117 @@
 
     <div class="container-fluid" id="app-container">
     <div class="container">
-    <div class="row app-row">
-      <div id="left-panel-region" class="col-xs-4 leftColumn-global">
-        <div class="row navsection">
-          <h3><span class="glyphicon glyphicon-th-large"></span></h3>
+      <div class="row app-row">
+
+        <!-- START OF LEFT-PANEL-REGION -->
+        <div id="left-panel-region" class="col-xs-4 leftColumn-global">
+
+          <div class="row navsection">
+            <h3><span class="glyphicon glyphicon-th-large"></span></h3>
+          </div>
+
+          <!-- NEW LIST BUTTON -->
+          <div id="new-list-btn-region" class="row col-xs-offset-1"></div>
+
+          <!-- PENDING-LIST -->
+          <div class="pending-list-region-Container row col-xs-offset-1">
+            <h4>
+              <span class="glyphicon glyphicon-list"></span>
+              Pending:
+            </h4>
+            <div id="pending-list-region" class="row col-xs-9"></div>
+          </div>  <!-- end of pending-list-region-Container -->
+
+          <!-- COMPLETED LIST -->
+          <div class="completed-list-region-Container row col-xs-offset-1">
+            <h4>
+              <span class="glyphicon glyphicon-ok-sign"></span>
+              Completed:
+            </h4>
+            <div id="completed-list-region" class="row col-xs-9"></div>
+          </div>  <!-- end of completed-list-region-Container -->
+
         </div>
-        <div id="new-list-btn-region" class="row col-xs-offset-1"></div>
+        <!-- END OF LEFT-PANEL-REGION -->
 
+        <!-- START OF RIGHT-PANEL-REGION -->
+        <div id="right-panel-region" class="col-xs-8 rightColumn-global">
 
+          <!-- HEADER -->
+          <div id="right-header-region">
 
-        <div class="pending-list-region-Container row col-xs-offset-1">
-          <h4>
-            <span class="glyphicon glyphicon-list"></span>
-            Pending:
-          </h4>
-          <div id="pending-list-region" class="row col-xs-9 col-xs-offset-1"></div>
-        </div>  <!-- end of pending-list-region-Container -->
+          </div>
 
-        <div class="completed-list-region-Container row col-xs-offset-1">
-          <h4>
-            <span class="glyphicon glyphicon-ok-sign"></span>
-            Completed:
-          </h4>
-          <div id="completed-list-region" class="row col-xs-9 col-xs-offset-1"></div>
-        </div>  <!-- end of completed-list-region-Container -->
+          <!-- BODY -->
+          <div id="right-body-region">
 
-
+          </div>
 
         </div>
+        <!-- END OF RIGHT-PANEL-REGION -->
       </div>
-      <div id="right-panel-region" class="col-xs-8 rightColumn-global"></div>
-    </div>
     </div>
     </div>
 
+    <!-- ################## -->
+    <!-- LEFT PANEL SCRIPTS -->
+    <!-- ################## -->
     <script id="left-panel-list" type="text/template">
+      <a href="#">
         <span class="left-panel-list-title"><%- title %></span>
+      </a>
     </script>
-        
-        <!-- <input id="left-panel-input-title" type="text" class="hidden form-control"> -->
 
-    <script id="left-panel-cmp-lists" type="text/template">
-    </script>
-    <script id="left-panel-pnd-lists" type="text/template">
-    </script>
     <script id="left-panel-lists" type="text/template">
     </script>
 
-
-
     <script id="left-panel-newlistbtn" type="text/template">
       <button class="new-list-btn btn">+ New List:</button>
+    </script>
+
+
+    <!-- ################## -->
+    <!-- RIGHT PANEL SCRIPTS -->
+    <!-- ################## -->
+    <script id="right-panel-header" type="text/template">
+      <div class="row right-panel-top-makespace"></div>
+      <div class="row">
+
+        <!-- header title -->
+        <div class="col-xs-9 col-xs-offset-1">
+          <h3 id="h3-header">
+            <%- title %>
+          </h3>
+          <form class="form-inline">
+            <input id="right-panel-input-title" type="text" class=" hidden form-control">
+            <button type="submit" id="right-panel-input-save" class="btn btn-small btn-success hidden">Ok</button>
+          </form>
+        </div>
+
+        <!-- header glyphs -->
+        <div class="col-xs-2 glyphs-header-row">
+          <a>
+            <span id="header-trash-list" class="glyphicon glyphicon-trash glyphs-header"></span>
+          </a>
+          <a>
+            &nbsp;<span id="header-icon-change-title" class="glyphicon glyphicon-pencil glyphs-header"></span>
+
+          </a>
+        </div>
+      </div>
+
+      <div class="row right-panel-medium-makespace"></div>
+
+      <!-- header add new card -->
+      <div class="row">
+        <div class="col-xs-9 col-xs-offset-1">
+          <a>
+            + &nbsp;&nbsp;&nbsp; Add new Card
+          </a>
+          <hr>
+        </div>
+      </div>
+
     </script>
 
 
@@ -71,7 +131,6 @@
     <!-- ################################### -->
     <!-- ############## FILES ############## -->
     <!-- ################################### -->
-
 
     <!-- Backbone.js Marionette.js PACK -->
     <script src="js/vendor/jquery.js"></script>
@@ -103,6 +162,17 @@
           <script src="js/mod_leftpanel/submods/submod_completed/controller.js"></script>
           <!-- Sub-Module PENDING LISTS -->
           <script src="js/mod_leftpanel/submods/submod_pending/controller.js"></script>
+
+
+    <!--####### Module LEFTPANEL #######-->
+    <!-- App.rightpanel -->
+      <script src="js/mod_rightpanel/app.js"></script>
+      <!-- App.rightpanel.Controller -->
+      <script src="js/mod_rightpanel/controller/controller.js"></script>
+      <!-- Intro.Entities -->
+      <script src="js/mod_rightpanel/entities/entities.js"></script>
+      <!-- Intro.Views -->
+      <script src="js/mod_rightpanel/views/views.js"></script>
 
 
     <script type="text/javascript">

@@ -1,13 +1,21 @@
 // Main App - Controller
 
 // --> js/main_app/controller.js
+var self = this;
 
 App.Controller = {
   init: function() {
     App.Controller.BigList = new App.Entities.Lists();
+
+    // providing access to BigList globally
+    var fullAccesBigList = (function(global) {
+      global.BigList = App.Controller.BigList
+    })(self)
   },
   loadLocalStorage: function() {
-    App.Controller.BigList.fetch();
+    // App.Controller.BigList.fetch();
+    BigList.fetch();
+
     // var listOfListsView = new App.LeftPanel.Views.Lists({
     //   collection: App.Controller.BigList
     // })
@@ -33,14 +41,14 @@ App.Controller = {
     var todos = new App.Entities.Todos();
     var newList = new App.Entities.List({todos: todos});
     newList.set({"id": id, "title": "Title-" + id});
-    App.Controller.BigList.create(newList);
+    BigList.create(newList);
     App.LeftPanel.Controller.selectPendingAndRender()
   },
   getId: function() {
     var id;
 
-    if (App.Controller.BigList) {
-      id = App.Controller.BigList.length + 1;
+    if (BigList) {
+      id = BigList.length + 1;
     } else {
       id = 1;
     }
