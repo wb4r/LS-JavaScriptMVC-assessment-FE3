@@ -38,10 +38,12 @@ App.Controller = {
   newList: function() {
     var id = this.getId();
 
-    var todos = new App.Entities.Todos();
-    var newList = new App.Entities.List({todos: todos});
+    // var cards = new App.Entities.Cards();
+    // var newList = new App.Entities.List({cards: cards});
+    var newList = new App.Entities.List();
     newList.set({"id": id, "title": "Title-" + id});
     BigList.create(newList);
+
     App.LeftPanel.Controller.selectPendingAndRender()
   },
   getId: function() {

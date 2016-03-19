@@ -16,6 +16,12 @@ App.module("RightPanel.Views", function(Views, App, Backbone, Marionette, $, _) 
     events: {
       "click    #header-icon-change-title":     "focusAndToggle",
       "click    #right-panel-input-save":       "checkTitleAndSave",
+      "click    #newCard-anchor":               "newCard"
+    },
+
+    newCard: function(e) {
+      e.preventDefault();
+      this.trigger("addCard", this, this.model)
     },
 
     focusAndToggle: function(e) {

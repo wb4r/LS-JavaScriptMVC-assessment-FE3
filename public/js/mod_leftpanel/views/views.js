@@ -13,7 +13,7 @@ App.module("LeftPanel.Views", function(Views, App, Backbone, Marionette, $, _) {
     },
 
     changeTitle: function() {
-      this.trigger("changeTitle")
+      this.trigger("changeTitle", this, this.model)
     }
   });
 
