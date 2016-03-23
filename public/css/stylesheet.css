@@ -36,7 +36,7 @@
 .completed-list-region-Container,
 .pending-list-region-Container,
 .navsection {
-  color: white;
+  color: blue;
 }
 
 ul li {
@@ -52,7 +52,7 @@ ul li {
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 .shown {
@@ -61,12 +61,12 @@ ul li {
 
 a:link {
   text-decoration: none!important;
-  color: white;
+  color: #4d4d4d;
 }
 
 a:visited {
   text-decoration: none!important;
-  color: white;
+  color: #4d4d4d;
 }
 
 a:hover {
@@ -88,4 +88,128 @@ a:hover {
 
 #h3-header {
   margin-top: 0px;
+}
+
+.board-title,
+.nav-header {
+  height: 60px;
+  width: 100%;
+}
+
+.list-column,
+.board-title,
+.main-container,
+.nav-header {
+  /*border: 1px solid blue;*/
+}
+
+.board-title h3 {
+  color: #dcdcdc;
+  font-family: Helvetica, Arial, sans-serif!important;
+}
+
+.list-column {
+  min-height: 45px;
+}
+
+
+#lists-region > ul {
+  display: flex;
+}
+
+#horizontalSliderList {
+  display: flex;
+}
+#body-region {
+  overflow-x: scroll!important;
+  /*white-space: nowrap!important;*/
+  width: 100%!important;
+  height: 75vh;
+}
+
+/*#lists-region {
+  white-space: nowrap;
+
+}*/
+
+.list-container-of-ul {
+  width: 150px;
+  background-color: #ebebeb!important;
+  padding: 5px 10px;
+  width: 200px;
+}
+
+
+.list-container-of-ul ul {
+  padding-left: initial!important;
+}
+
+.newListclass,
+.list-container-of-ul {
+  /*margin-left: 15px;*/
+}
+
+.newListclass {
+  background-color: #00598c;
+  border: 0px;
+  color: white;
+}
+
+body {
+  background-color: #0079bf;
+}
+
+.nav-header {
+  background-color: #00598c!important;
+  color: white!important;
+}
+
+small {
+  color: #9d9d9d!important;
+}
+
+.rowListTitleAndDelete {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.listTitle {
+  font-weight: bold;
+}
+
+.wellForCard {
+  margin-bottom: 6px;
+  padding: 5px;
+  background-color: white;
+}
+
+.btn-add-card {
+  width: 100%;
+  min-height: 10px!important;
+  color: white
+}
+
+/* highlight drag & drop */
+
+/* Draggabilly adds is-dragging */
+.grid-item.is-dragging,
+/* Packery adds class while transitioning to drop position */
+.grid-item.is-positioning-post-drag {
+  background: #C90;
+  z-index: 2; /* keep dragged item on top */
+}
+
+.grid-sizer {
+  width: 210px;
+  margin-left: 55px;
+}
+.grid-item {
+  width: 200px;
+}
+/* 2 columns wide */
+.grid-item--width2 { width: 40%; }
+
+.grid {
+  /*width: 100%!important;*/
 }

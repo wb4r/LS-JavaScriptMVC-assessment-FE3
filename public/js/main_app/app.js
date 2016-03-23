@@ -9,8 +9,10 @@ App.on("before:start", function() {
   var Layout = Marionette.LayoutView.extend({
     el: "#app-container",
     regions: {
-      leftPanel: "#left-panel-region",
-      rightPanel: "#right-panel-region"
+      // leftPanel: "#left-panel-region",
+      // rightPanel: "#right-panel-region"
+      nav: "#nav-region",
+      body: "#body-region"
     }
   })
 
@@ -19,17 +21,8 @@ App.on("before:start", function() {
 })
 
 App.on("start", function() {
-  // App.Controller.init();
-  App.LeftPanel.start();
   App.Controller.loadLocalStorage();
-  App.LeftPanel.Controller.init();
-  // App.regions.LeftPanel.show();
+  // App.Body.Controller.init();
+  App.Body.Controller.displayLists();
 
-  // App.Intro.Controller.showIntroAlbums();
-  // App.Cart.Controller.startCart();
-  // App.Cart.Total.Controller.init();
-  // App.Custom.Controller.init();
 })
-// App.on("after:start", function() {
-//   App.LeftPanel.Controller.init();
-// })

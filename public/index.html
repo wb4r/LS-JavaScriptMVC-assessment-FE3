@@ -5,79 +5,105 @@
     <title>Kanban Application</title>
     <link rel="stylesheet" href="css/vendor/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/vendor/backbone.modal.css">
     <link rel="stylesheet" href="css/vendor/backbone.modal.theme.css">
     <link rel="stylesheet" href="css/stylesheet.css">
   </head>
   <body>
+    <div class="container-fluid nav-header page-header">
+      <h2>my Kanban <small>Application</small></h2>
+    </div>
+    <div class="container-fluid main-container" id="app-container">
 
-    <div class="container-fluid" id="app-container">
-    <div class="container">
-      <div class="row app-row">
+      <div class="container-fluid">
+        <div class="container-fluid board-title lead">
 
-        <!-- START OF LEFT-PANEL-REGION -->
-        <div id="left-panel-region" class="col-xs-4 leftColumn-global">
-
-          <div class="row navsection">
-            <h3><span class="glyphicon glyphicon-th-large"></span></h3>
-          </div>
-
-          <!-- NEW LIST BUTTON -->
-          <div id="new-list-btn-region" class="row col-xs-offset-1"></div>
-
-          <!-- PENDING-LIST -->
-          <div class="pending-list-region-Container row col-xs-offset-1">
-            <h4>
-              <span class="glyphicon glyphicon-list"></span>
-              Pending:
-            </h4>
-            <div id="pending-list-region" class="row col-xs-9"></div>
-          </div>  <!-- end of pending-list-region-Container -->
-
-          <!-- COMPLETED LIST -->
-          <div class="completed-list-region-Container row col-xs-offset-1">
-            <h4>
-              <span class="glyphicon glyphicon-ok-sign"></span>
-              Completed:
-            </h4>
-            <div id="completed-list-region" class="row col-xs-9"></div>
-          </div>  <!-- end of completed-list-region-Container -->
-
+          <h3><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;<strong>Board Progression</strong></h3>
         </div>
-        <!-- END OF LEFT-PANEL-REGION -->
+        <div id="body-region">
 
-        <!-- START OF RIGHT-PANEL-REGION -->
-        <div id="right-panel-region" class="col-xs-8 rightColumn-global">
+          <!-- container of ALL lists -->
+          <div id="horizontalSliderList" class="row">
 
-          <!-- HEADER -->
-          <div id="right-header-region">
+            <div id="lists-region" class="app-row">
+              <!-- Container of each List that contains Cards -->
+              <div class=" list-column">
+                <div class="grid-sizer">
 
-          </div>
+                </div>
+                <!-- title of list -->
+                <!-- content of list -->
+                <div class="pending-list-region-Container">
+                  <!-- <div id="pending-list-region" class="row col-xs-9"></div> -->
 
-          <!-- BODY -->
-          <div id="right-body-region">
-
+                </div>
+              </div>
+            </div>
+            <div id="new-list-region">            </div>
           </div>
 
         </div>
-        <!-- END OF RIGHT-PANEL-REGION -->
       </div>
-    </div>
+
     </div>
 
-    <!-- ################## -->
-    <!-- LEFT PANEL SCRIPTS -->
-    <!-- ################## -->
-    <script id="left-panel-list" type="text/template">
+        <!-- col-xs-2  -->
+
+    <!-- lists -->
+    <script id="list-template" type="text/template">
+
+
+      <div class="grid-item list-container-of-ul well ">
+        <div class="row rowListTitleAndDelete">
+
+          <a class="listTitle" href="#">
+            <span class=""><%- title %></span>
+            <input class="list-input-text hidden form-control" type="text">
+          </a>
+          <a class="deleteList-btn" href="#">
+            <span id="<%- id %>" class="glyphicon glyphicon-remove" style="float: right"></span>
+          </a>
+        </div>
+        <ul id="ul-for-cards-list-<%- id %>">
+        </ul>
+
+      </div>
+    </script>
+
+    <script id="newCardBtn-template" type="text/template">
       <a href="#">
-        <span class="left-panel-list-title"><%- title %></span>
+        <span class="glyphicon glyphicon-plus btn-add-card"></span>
       </a>
     </script>
 
-    <script id="left-panel-lists" type="text/template">
+    <script id="lists-template" type="text/template">
+    </script>
+    <!-- cards -->
+    <script id="card-template" type="text/template">
+      <div class="well wellForCard">
+        <a class="card-link" href="#">
+          <span class="card-title"><%- title %></span>
+          <input class="card-input-text hidden form-control" type="text">
+        </a>
+
+      </div>
     </script>
 
-    <script id="left-panel-newlistbtn" type="text/template">
+    <script id="cards-template" type="text/template">
+    </script>
+
+    <script id="newListInput-template" type="text/template">
+      <div id="newList-div">
+
+      </div>
+    </script>
+
+
+
+
+
+    <script id="" type="text/template">
       <button class="new-list-btn btn">+ New List:</button>
     </script>
 
@@ -139,7 +165,10 @@
 
     <!-- Backbone.js Marionette.js PACK -->
     <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/jquery-ui.min.js"></script>
+    <!-- <script src="js/vendor/jquery-ui.min.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://npmcdn.com/draggabilly@2.1/dist/draggabilly.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/2.0.0/packery.pkgd.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/vendor/json2.js"></script>
     <script src="js/vendor/underscore.js"></script>
@@ -154,31 +183,13 @@
     <script src="js/main_app/entities.js"></script>
     <script src="js/main_app/views.js"></script>
 
-    <!--####### Module LEFTPANEL #######-->
-    <!-- App.LeftPanel -->
-      <script src="js/mod_leftpanel/app.js"></script>
-      <!-- App.LeftPanel.Controller -->
-      <script src="js/mod_leftpanel/controller/controller.js"></script>
-      <!-- Intro.Entities -->
-      <script src="js/mod_leftpanel/entities/entities.js"></script>
-      <!-- Intro.Views -->
-      <script src="js/mod_leftpanel/views/views.js"></script>
-          <!-- Sub-Module COMPLETED LISTS -->
-          <script src="js/mod_leftpanel/submods/submod_completed/controller.js"></script>
-          <!-- Sub-Module PENDING LISTS -->
-          <script src="js/mod_leftpanel/submods/submod_pending/controller.js"></script>
+    <!-- body -->
+    <script src="js/body-region/app.js"></script>
+    <script src="js/body-region/controller.js"></script>
+    <script src="js/body-region/entities.js"></script>
+    <script src="js/body-region/views.js"></script>
 
-
-    <!--####### Module LEFTPANEL #######-->
-    <!-- App.rightpanel -->
-      <script src="js/mod_rightpanel/app.js"></script>
-      <!-- App.rightpanel.Controller -->
-      <script src="js/mod_rightpanel/controller/controller.js"></script>
-      <!-- Intro.Entities -->
-      <script src="js/mod_rightpanel/entities/entities.js"></script>
-      <!-- Intro.Views -->
-      <script src="js/mod_rightpanel/views/views.js"></script>
-
+    <script src="js/visual-effects.js"></script>
 
     <script type="text/javascript">
       App.start()
@@ -186,3 +197,13 @@
 
   </body>
 </html>
+
+<!--
+  cards description content
+  cards description read and update
+  cards Archive and reOpen
+  list Archive
+  ///
+  beautify
+  drag and drop
+-->
